@@ -60,6 +60,24 @@ h1 {
   margin: 0 0 1.5rem;
 }
 
+h2 {
+  -webkit-text-stroke: 1px black;
+  -webkit-text-fill-color: white;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 1.5rem;
+}
+
+
+#p1 {
+  -webkit-text-stroke: 1px black;
+  -webkit-text-fill-color: white;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 1.5rem;
+}
+
+
 i {
   font-size: 1.3rem;
 }
@@ -126,7 +144,7 @@ a.btn:hover {
   align-items: center;
 }
 
-.flex-form input[type="submit"] {
+.flex-form input[type="button"] {
   background: #035f08;
   border: 1px solid #035f08;
   color: #fff;
@@ -137,7 +155,7 @@ a.btn:hover {
   transition: all 0.2s;
 }
 
-.flex-form input[type="submit"]:hover {
+.flex-form input[type="button"]:hover {
   background: #035f08;
   border: 1px solid #035f08;
 }
@@ -231,6 +249,7 @@ input[type="search"] {
   input[type="search"] {
     flex-basis: 0;
   }
+
 
   label {
     display: none;
