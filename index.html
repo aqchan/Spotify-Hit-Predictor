@@ -1,5 +1,38 @@
 
 <body>
+  <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-database.js"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-analytics.js"></script>
+  
+  <script>
+    var firebaseConfig = {
+        apiKey: "AIzaSyA5Z1FcOg_OdeFsNcFWOcWZQo_yTrlzn7o",
+        authDomain: "spotify-data-science.firebaseapp.com",
+        databaseURL: "https://spotify-data-science.firebaseio.com",
+        projectId: "spotify-data-science",
+        storageBucket: "spotify-data-science.appspot.com",
+        messagingSenderId: "34593205335",
+        appId: "1:34593205335:web:6ee9ac5ed04d589fcd8712",
+        measurementId: "G-ZWJSWWP8BP"
+      };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+
+    var database = firebase.database();
+
+    function writeData() {
+        database.ref("Song").set({
+          name: document.getElementById("searchVal").value
+        });
+    }
+
+  </script>
   <div class="container">
       <link href="layout.css" rel="stylesheet" type="text/css">
       <div class="cover">
@@ -9,7 +42,7 @@
             <i class="ion-location"></i>
           </label>
           <input type="search" placeholder="Search for a song" id="searchVal">
-          <input type="submit" name="Search" value="Search" onclick="saveToFirebase(document.getElementById('searchVal').value)">
+          <input type="submit" name="Search" value="Search" onclick="writeData()">
         </form>
         <div id="madeby">
           <span>
@@ -18,53 +51,4 @@
         </div>
       </div>
     </div>
-
-    <script>
-      function saveToFirebase(search) {
-        var searchObject = {
-            search: search
-        };
-
-      firebase.database().ref('spotify-data-science').push().set(searchObject)
-        .then(function(snapshot) {
-            success(); // some success method
-        }, function(error) {
-            console.log('error' + error);
-            error(); // some error method
-        });
-      }
-
-      function success() {
-
-      }
-      
-      function error() {
-        
-      }
-
-    </script>
-
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>
-
-  <!-- TODO: Add SDKs for Firebase products that you want to use
-      https://firebase.google.com/docs/web/setup#available-libraries -->
-  <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-analytics.js"></script>
-
-  <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-      apiKey: "AIzaSyA5Z1FcOg_OdeFsNcFWOcWZQo_yTrlzn7o",
-      authDomain: "spotify-data-science.firebaseapp.com",
-      databaseURL: "https://spotify-data-science.firebaseio.com",
-      projectId: "spotify-data-science",
-      storageBucket: "spotify-data-science.appspot.com",
-      messagingSenderId: "34593205335",
-      appId: "1:34593205335:web:6ee9ac5ed04d589fcd8712",
-      measurementId: "G-ZWJSWWP8BP"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
-  </script>
 </body>
