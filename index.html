@@ -28,7 +28,8 @@
 
     function writeData() {
         database.ref("Song").set({
-          name: document.getElementById("searchVal").value
+          name: document.getElementById("searchVal").value,
+          artist: document.getElementById("artistVal").value
         });
     }
 
@@ -41,7 +42,8 @@
           <label for="from">
             <i class="ion-location"></i>
           </label>
-          <input type="search" placeholder="Search for a song" id="searchVal">
+          <input type="search" placeholder="Song Name" id="searchVal">
+          <input type="artist" placeholder="Artist Name" id="artistVal">
           <input type="submit" name="Search" value="Search" onclick="writeData()">
         </form>
         <div id="madeby">
