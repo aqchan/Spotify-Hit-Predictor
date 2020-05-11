@@ -25,12 +25,22 @@
     firebase.analytics();
 
     var database = firebase.database();
-
+    var percentage;
     function writeData() {
         database.ref("Song").set({
           artistName: document.getElementById("artistVal").value,
           songName: document.getElementById("searchVal").value
         });
+
+      
+      var ref = database.ref("Percentage/Percentage");
+      ref.on("value", function(snapshot) {
+        percentage = snapshot.val();
+        changeText();
+      });
+    }
+    function changeText() {
+      document.getElementById('p1').innerHTML = percentage + "% Chance of being a hit";
     }
 
   </script>
@@ -38,13 +48,15 @@
       <link href="layout.css" rel="stylesheet" type="text/css">
       <div class="cover">
         <h1>Spotify Hit Predictor</h1>
+        <p id="p1">0% Chance of being a hit</p>
         <form  class="flex-form">
           <label for="from">
             <i class="ion-location"></i>
           </label>
-          <input type="search" placeholder="Artist Name" id="artistVal">
           <input type="search" placeholder="Song Name" id="searchVal">
-          <input type="submit" name="Search" value="Search" onclick="writeData()">
+          <input type="search" placeholder="Artist Name" id="artistVal">
+          <input type="button" name="Search" value="Search" onclick="writeData()">
+
         </form>
         <div id="madeby">
           <span>
