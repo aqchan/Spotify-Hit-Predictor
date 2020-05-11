@@ -28,8 +28,8 @@
     var percentage;
     function writeData() {
         database.ref("Song").set({
-          name: document.getElementById("searchVal").value,
-          artist: document.getElementById("artistVal").value
+          artistName: document.getElementById("artistVal").value,
+          songName: document.getElementById("searchVal").value
         });
 
       
@@ -54,8 +54,9 @@
             <i class="ion-location"></i>
           </label>
           <input type="search" placeholder="Song Name" id="searchVal">
-          <input type="artist" placeholder="Artist Name" id="artistVal">
+          <input type="search" placeholder="Artist Name" id="artistVal">
           <input type="button" name="Search" value="Search" onclick="writeData()">
+
         </form>
         <div id="madeby">
           <span>
