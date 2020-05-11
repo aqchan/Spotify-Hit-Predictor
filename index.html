@@ -25,7 +25,7 @@
             search: search
         };
 
-      firebase.database().ref('song-query').push().set(searchObject)
+      firebase.database().ref('spotify-data-science').push().set(searchObject)
         .then(function(snapshot) {
             success(); // some success method
         }, function(error) {
